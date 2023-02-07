@@ -1,19 +1,19 @@
 import express from "express";
 import {
-    getUser,
-    getUserById,
-    createUser,
-    updateUser,
-    deleteUser,
+   getUser,
+   getUserById,
+   createUser,
+   updateUser,
+   deleteUser,
 } from "../controller/Users.js";
-import { verifyUser, adminOnly } from "../middleware/AuthUser.js";
+import { verifyUser } from "../middleware/AuthUser.js";
 
 const router = express.Router();
 
-router.get("/users", verifyUser, adminOnly, getUser);
+router.get("/users", verifyUser, getUser);
 router.get("/user/:id", verifyUser, getUserById);
-router.post("/user", createUser);
+router.post("/register", createUser);
 router.patch("/user/:id", verifyUser, updateUser);
-router.delete("/user/:id", verifyUser, adminOnly, deleteUser);
+router.delete("/user/:id", verifyUser, deleteUser);
 
 export default router;
